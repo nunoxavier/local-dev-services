@@ -1,4 +1,4 @@
-# All-in-one local development resources
+# local-dev-services
 
 One `docker compose up` gives you the infrastructure most apps need during local development:
 
@@ -15,8 +15,8 @@ Every service has working default credentials, a healthcheck and a persistent vo
 Requires Docker with Docker Compose v2 (Docker Desktop, OrbStack, Colima or Docker Engine).
 
 ```sh
-git clone https://github.com/nunoxavier/aio-local-resources.git
-cd aio-local-resources
+git clone https://github.com/nunoxavier/local-dev-services.git
+cd local-dev-services
 docker compose up -d --wait
 ```
 
@@ -87,7 +87,7 @@ If you have `make`, these wrap the Compose commands:
 
 ## Using from other Compose projects
 
-The services run on a Docker network named `aio-local-resources`. To use them from another Compose project's containers, join that network:
+The services run on a Docker network named `local-dev-services`. To use them from another Compose project's containers, join that network:
 
 ```yaml
 # your-app/docker-compose.yml
@@ -100,7 +100,7 @@ services:
 
 networks:
   default:
-    name: aio-local-resources
+    name: local-dev-services
     external: true
 ```
 

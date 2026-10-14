@@ -11,7 +11,7 @@ A public repo with a Docker Compose setup that gives developers local Postgres, 
 - `docker-compose.yml` is the single source of truth. Every setting is `${VAR:-default}`, and `.env.example` documents the same variables with the same defaults, all commented out. When adding or changing a variable, update `docker-compose.yml`, `.env.example` and the README together.
 - Garage needs no manual setup: `garage server --single-node --default-bucket` (Garage ≥ v2.3.0) sets up the layout and creates the access key and bucket from the `GARAGE_DEFAULT_*` env vars on every start. This is idempotent. Changing the vars later adds a new key or bucket and leaves the old ones in place. Key IDs must be `GK` + 24 hex chars, and secrets 64 hex chars. `rpc_secret` is deliberately left out of `garage.toml` and comes from `GARAGE_RPC_SECRET`.
 - Ports are published on `${BIND_ADDRESS:-127.0.0.1}`, because the default credentials are public.
-- The default network has a fixed name, `aio-local-resources`, so other Compose projects can join it as `external`. There are no `container_name`s, which avoids clashes. Use `docker compose exec <service>`.
+- The default network has a fixed name, `local-dev-services`, so other Compose projects can join it as `external`. There are no `container_name`s, which avoids clashes. Use `docker compose exec <service>`.
 - Postgres 18+ mounts its volume at `/var/lib/postgresql`, not `/var/lib/postgresql/data`.
 - The `Makefile` is an optional thin wrapper around `docker compose`. `make` with no target prints help, generated from the `## ` comments.
 

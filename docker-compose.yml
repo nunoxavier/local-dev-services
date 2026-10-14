@@ -1,4 +1,4 @@
-name: aio-local-resources
+name: local-dev-services
 
 # Every value below has a working default. To change one, copy .env.example to .env and edit it.
 
@@ -61,7 +61,7 @@ services:
 networks:
   default:
     # Fixed name so other Compose projects can join it (see README)
-    name: aio-local-resources
+    name: local-dev-services
 
 volumes:
   postgres_data:
